@@ -1,6 +1,5 @@
 var madness;
 var executeButton = document.getElementById('execute');
-var echoDiv = document.getElementById('echo');
 var trigger = false;
 var madnessOn = new Vue({
   el:'#madness',
