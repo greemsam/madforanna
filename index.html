@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css"> 
+  <link rel="stylesheet" href="css/madforanna.css">
+  <title>안나여왕님 찬양하기</title>
+</head>
+<body>
+  <div id="madness">
+    <img id="anna" src="img/anna.png" alt="안나여왕님">
+    <button id="execute" v-on:click="setTrigger">여왕님 찬양하기<span class="material-icons">keyboard_arrow_right</span></button>
+    <div id="echo">    
+      {{textWrite(trigger)}}
+    </div>
+  </div>
+  <script src="js/madforanna.js"></script>
+</body>
+</html>
