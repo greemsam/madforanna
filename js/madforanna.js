@@ -13,12 +13,17 @@ var madnessOn = new Vue({
     },
     textWrite:(triggerValue)=>{
       var executeButton = document.getElementById('execute');
-      if(triggerValue === 1){
-        madness = setInterval(madnessOn.createAnna, 30);
-        executeButton.innerHTML = '광기중지'
-      }else{
-        clearInterval(madness);
-        executeButton.innerHTML = '계속 찬양하기'
+      var theMaxNumberOfAnna = 0;
+      while(theMaxNumberOfAnna < 300){
+        if(triggerValue === 1){
+          theMaxNumberOfAnna++;
+          madness = setInterval(madnessOn.createAnna, 30);
+          executeButton.innerHTML = '광기중지'
+        }else{
+          clearInterval(madness);
+          executeButton.innerHTML = '계속 찬양하기'
+        }
+        console.log(theMaxNumberOfAnna);
       }
     },
     createAnna:()=>{
