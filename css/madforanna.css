@@ -9,6 +9,7 @@
 }
 #button-wrap{
   background:#fff;
+  z-index:9999;
   padding:30px 20px;
   width:100%;
   position:fixed;
