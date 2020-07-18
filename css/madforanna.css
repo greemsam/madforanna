@@ -27,6 +27,7 @@
   color:#fff;
   border:none;
   outline:0;
+  cursor:pointer;
 }
 #execute span{
   font-size:30px;
