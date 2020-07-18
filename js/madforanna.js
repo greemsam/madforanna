@@ -10,6 +10,7 @@ const madnessOn = new Vue({
       if(numOfEchoes < echoLimit){
         trigger = !trigger;
         madnessOn.changeButtonText(trigger);
+        madnessOn.screenFix();
         switch(trigger){
           case true: madness = setInterval(madnessOn.activeMadness, 10);
           break;
@@ -67,9 +68,6 @@ const madnessOn = new Vue({
     },
     changeButtonText:(triggerValue)=>{
       const mednessButton = document.getElementById('execute');
-      mednessButton.addEventListener('click', function(event){
-        event.preventDefault();
-      })
       if(triggerValue === true && numOfEchoes < echoLimit){
         mednessButton.innerHTML = '광기 중지하기';
       }
