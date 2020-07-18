@@ -7,13 +7,22 @@
   margin:0 auto;
   width:360px;
 }
+#button-wrap{
+  background:#fff;
+  padding:30px 20px;
+  width:100%;
+  position:fixed;
+  left:0;
+  bottom:0;
+  box-shadow:0 0 3px 1px rgba(0,0,0,0.2);
+}
 #execute{
   border-radius:50px;
   font-size:24px;
   width:340px;
   height:60px;
   display:block;
-  margin:30px auto 30px;
+  margin:0 auto;
   background:#f54d0b;
   color:#fff;
   border:none;
@@ -27,6 +36,7 @@
 #echo{
   width:100%;
   font-size:30px;
+  padding:30px 0 180px;
 }
 #echo span{
   color:#666;
@@ -37,6 +47,7 @@
   }
   #execute{
     width:100%;
-    height:50px;
+    height:40px;
+    font-size:1.3rem;
   }
 }
