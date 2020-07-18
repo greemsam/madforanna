@@ -1,8 +1,8 @@
-var madness;
-var numOfEchoes = 0;
-var echoLimit = 621;
-var trigger = false;
-var madnessOn = new Vue({
+let madness;
+let trigger = false;
+let numOfEchoes = 0;
+const echoLimit = 621;
+const madnessOn = new Vue({
   el:'#madness',
   data:{},
   methods:{
@@ -30,8 +30,8 @@ var madnessOn = new Vue({
       console.log(trigger);
     },
     createEchoes:()=>{    
-      var echoDiv = document.getElementById('echo');
-      var annaSpan = document.createElement('span');
+      const echoDiv = document.getElementById('echo');
+      const annaSpan = document.createElement('span');
       madnessOn.createTags(echoDiv, annaSpan);
       madnessOn.createText(annaSpan);
       madnessOn.setTextStyle(annaSpan);
@@ -40,9 +40,9 @@ var madnessOn = new Vue({
       parentTagForCreate.appendChild(childrenTags);
     },
     createText:(textForTags)=>{
-      var annaText = document.createTextNode('안나!!');
-      var queenText = document.createTextNode('여왕님!!');
-      var getRandom = Math.floor(Math.random() * 2);
+      const annaText = document.createTextNode('안나!!');
+      const queenText = document.createTextNode('여왕님!!');
+      let getRandom = Math.floor(Math.random() * 2);
       switch(getRandom){
         case 0 : textForTags.appendChild(annaText);
         break;
@@ -51,9 +51,9 @@ var madnessOn = new Vue({
       }
     },
     setTextStyle:(textToAdjust)=>{
-      var diviceScreenWidth = screen.width;
-      var getRandomTextSize;
-      var getRandomTextMargin;
+      let diviceScreenWidth = screen.width;
+      let getRandomTextSize;
+      let getRandomTextMargin;
       if(diviceScreenWidth > 400){
         getRandomTextSize = Math.floor(Math.random() * (44 - 18)) + 18;
         getRandomTextMargin = Math.floor(Math.random() * (30 - 10)) + 10;
@@ -66,7 +66,7 @@ var madnessOn = new Vue({
       textToAdjust.style.marginLeft = `${getRandomTextMargin}px`;
     },
     changeButtonText:(triggerValue)=>{
-      var mednessButton = document.getElementById('execute');
+      const mednessButton = document.getElementById('execute');
       if(triggerValue === true && numOfEchoes < echoLimit){
         mednessButton.innerHTML = '광기 중지하기';
       }
@@ -78,7 +78,7 @@ var madnessOn = new Vue({
       }
     },
     screenFix:()=>{
-      var madnessArea = document.getElementById('madness');
+      const madnessArea = document.getElementById('madness');
       window.scrollTo(0, madnessArea.offsetHeight);
     }
   }
