@@ -10,9 +10,8 @@ const madnessOn = new Vue({
       if(numOfEchoes < echoLimit){
         trigger = !trigger;
         madnessOn.changeButtonText(trigger);
-        madnessOn.screenFix();
         switch(trigger){
-          case true: madness = setInterval(madnessOn.activeMadness, 10);
+          case true: madness = setInterval(madnessOn.activeMadness, 30);
           break;
           case false: clearInterval(madness);
           break;
