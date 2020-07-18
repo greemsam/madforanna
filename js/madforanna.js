@@ -9,6 +9,7 @@ const madnessOn = new Vue({
     setMadness:()=>{
       if(numOfEchoes < echoLimit){
         trigger = !trigger;
+        madnessOn.screenFix();
         madnessOn.changeButtonText(trigger);
         switch(trigger){
           case true: madness = setInterval(madnessOn.activeMadness, 30);
@@ -78,8 +79,8 @@ const madnessOn = new Vue({
       }
     },
     screenFix:()=>{
-      const madnessArea = document.getElementById('madness');
-      window.scrollTo(0, madnessArea.offsetHeight);
+      const contentArea = document.getElementById('content-area');
+      window.scrollTo(0, contentArea.offsetHeight);
     }
   }
 });
