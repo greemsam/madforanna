@@ -67,9 +67,9 @@ const madnessOn = new Vue({
     },
     changeButtonText:(triggerValue)=>{
       const mednessButton = document.getElementById('execute');
-      // mednessButton.addEventListener('click', function(event){
-      //   event.preventDefault();
-      // })
+      mednessButton.addEventListener('click', function(event){
+        event.preventDefault();
+      })
       if(triggerValue === true && numOfEchoes < echoLimit){
         mednessButton.innerHTML = '광기 중지하기';
       }
