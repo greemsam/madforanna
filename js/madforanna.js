@@ -2,43 +2,47 @@ let madness;
 let trigger = false;
 let numOfEchoes = 0;
 const echoLimit = 621;
-const madnessOn = new Vue({
+const madnessObject = new Vue({
   el:'#madness',
   data:{},
   methods:{
-    setMadness:()=>{
+    active:()=>{
       if(numOfEchoes < echoLimit){
         trigger = !trigger;
-        madnessOn.screenFix();
-        madnessOn.changeButtonText(trigger);
-        switch(trigger){
-          case true: madness = setInterval(madnessOn.activeMadness, 30);
-          break;
-          case false: clearInterval(madness);
-          break;
-        }
+        madnessObject.changeButtonText(trigger);
+        madnessObject.toggleMadnessFunctions(trigger);
+        madnessObject.inputTextClickEvent();
+      }
+      console.log(trigger);
+    },
+    toggleMadnessFunctions:(triggerValue)=>{
+      switch(triggerValue){
+        case true: madness = setInterval(madnessObject.madnessFunctions, 30);
+        break;
+        case false: clearInterval(madness);
+        break;
       }
     },
-    activeMadness:()=>{
+    madnessFunctions:()=>{
       numOfEchoes++;
-      madnessOn.createEchoes();
-      madnessOn.changeButtonText(trigger);
-      madnessOn.screenFix();
+      madnessObject.createEchoes();
+      madnessObject.changeButtonText(trigger);
+      madnessObject.screenFix();
       if(numOfEchoes >= echoLimit){
         trigger = false;
         clearInterval(madness);
       }
-      console.log(trigger);
     },
     createEchoes:()=>{    
       const echoDiv = document.getElementById('echo');
       const annaSpan = document.createElement('span');
-      madnessOn.createTags(echoDiv, annaSpan);
-      madnessOn.createText(annaSpan);
-      madnessOn.setTextStyle(annaSpan);
+      madnessObject.createTags(echoDiv, annaSpan);
+      madnessObject.createText(annaSpan);
+      madnessObject.setTextStyle(annaSpan);
     },
     createTags:(parentTagForCreate, childrenTags)=>{
       parentTagForCreate.appendChild(childrenTags);
+      childrenTags.setAttribute('class', 'anna-text');
     },
     createText:(textForTags)=>{
       const annaText = document.createTextNode('안나!!');
@@ -75,12 +79,23 @@ const madnessOn = new Vue({
         mednessButton.innerHTML = '계속 찬양하기'
       }
       else if(numOfEchoes >= echoLimit){
-        mednessButton.innerHTML = '더 이상 찬양불가'
+        mednessButton.innerHTML = '충분히 찬양 하였습니다.'
       }
     },
     screenFix:()=>{
       const contentArea = document.getElementById('content-area');
       window.scrollTo(0, contentArea.offsetHeight);
+    },
+    inputTextClickEvent:()=>{
+      let annaTextElements = document.getElementsByClassName('anna-text');
+      for(let i = 0; i<annaTextElements.length; i++){
+        if(trigger === false){
+          annaTextElements[i].addEventListener('click', madnessObject.inputClasses);
+        }
+      }
+    },
+    inputClasses:(e)=>{
+      e.target.setAttribute('class', 'anna-picture');
     }
   }
 });
