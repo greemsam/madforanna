@@ -1,23 +1,26 @@
+let diviceScreenWidth = screen.width;
 let madness;
 let trigger = false;
 let numOfEchoes = 0;
+let speedOfEchoes = 30;
+if (diviceScreenWidth < 400){
+  speedOfEchoes = 80;
+}
 const echoLimit = 621;
 const madnessObject = new Vue({
   el:'#madness',
   data:{},
   methods:{
     active:()=>{
-      if(numOfEchoes < echoLimit){
-        trigger = !trigger;
-        madnessObject.changeButtonText(trigger);
-        madnessObject.toggleMadnessFunctions(trigger);
-        madnessObject.inputTextClickEvent();
-      }
+      trigger = !trigger;
+      madnessObject.changeButtonText(trigger);
+      madnessObject.toggleMadnessFunctions(trigger);
+      madnessObject.inputTextClickEvent();
       console.log(trigger);
     },
     toggleMadnessFunctions:(triggerValue)=>{
       switch(triggerValue){
-        case true: madness = setInterval(madnessObject.madnessFunctions, 30);
+        case true: madness = setInterval(madnessObject.madnessFunctions, speedOfEchoes);
         break;
         case false: clearInterval(madness);
         break;
@@ -28,17 +31,21 @@ const madnessObject = new Vue({
       madnessObject.createEchoes();
       madnessObject.changeButtonText(trigger);
       madnessObject.screenFix();
-      if(numOfEchoes >= echoLimit){
-        trigger = false;
-        clearInterval(madness);
-      }
+      console.log(trigger, document.getElementsByClassName('anna-text').length, speedOfEchoes);
     },
     createEchoes:()=>{    
       const echoDiv = document.getElementById('echo');
       const annaSpan = document.createElement('span');
+      const createdAnnaSpan = document.getElementsByTagName('span');
       madnessObject.createTags(echoDiv, annaSpan);
       madnessObject.createText(annaSpan);
       madnessObject.setTextStyle(annaSpan);
+      if(numOfEchoes > echoLimit){
+        madnessObject.removeTags(createdAnnaSpan);
+      }
+    },
+    removeTags:(childToRemove)=>{  
+      childToRemove[0].remove();
     },
     createTags:(parentTagForCreate, childrenTags)=>{
       parentTagForCreate.appendChild(childrenTags);
@@ -56,7 +63,6 @@ const madnessObject = new Vue({
       }
     },
     setTextStyle:(textToAdjust)=>{
-      let diviceScreenWidth = screen.width;
       let getRandomTextSize;
       let getRandomTextMargin;
       if(diviceScreenWidth > 400){
@@ -72,14 +78,11 @@ const madnessObject = new Vue({
     },
     changeButtonText:(triggerValue)=>{
       const mednessButton = document.getElementById('execute');
-      if(triggerValue === true && numOfEchoes < echoLimit){
+      if(triggerValue === true){
         mednessButton.innerHTML = '광기 중지하기';
       }
-      else if(triggerValue === false && numOfEchoes < echoLimit){
+      else if(triggerValue === false){
         mednessButton.innerHTML = '계속 찬양하기'
-      }
-      else if(numOfEchoes >= echoLimit){
-        mednessButton.innerHTML = '충분히 찬양 하였습니다.'
       }
     },
     screenFix:()=>{
