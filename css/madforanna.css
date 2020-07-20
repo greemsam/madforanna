@@ -46,7 +46,7 @@
   color:#666;
   display:inline-block;
 }
-@media screen and (max-width: 359px){
+@media screen and (max-width: 420px){
   #anna{
     width:100%;
   }
