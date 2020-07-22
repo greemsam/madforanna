@@ -63,18 +63,18 @@ const madnessObject = new Vue({
       }
     },
     setTextStyle:(textToAdjust)=>{
-      let getRandomTextSize;
-      let getRandomTextMargin;
+      let randomTextSize;
+      let randomTextMargin;
       if(diviceScreenWidth > 400){
-        getRandomTextSize = Math.floor(Math.random() * (44 - 18)) + 18;
-        getRandomTextMargin = Math.floor(Math.random() * (30 - 10)) + 10;
+        randomTextSize = Math.floor(Math.random() * (44 - 18)) + 18;
+        randomTextMargin = Math.floor(Math.random() * (30 - 10)) + 10;
       }
       else if(diviceScreenWidth <= 400){
-        getRandomTextSize = Math.floor(Math.random() * (26 - 16)) + 16;
-        getRandomTextMargin = Math.floor(Math.random() * (22 - 5)) + 5;
+        randomTextSize = Math.floor(Math.random() * (26 - 16)) + 16;
+        randomTextMargin = Math.floor(Math.random() * (22 - 5)) + 5;
       }
-      textToAdjust.style.fontSize = `${getRandomTextSize}px`;
-      textToAdjust.style.marginLeft = `${getRandomTextMargin}px`;
+      textToAdjust.style.fontSize = `${randomTextSize}px`;
+      textToAdjust.style.marginLeft = `${randomTextMargin}px`;
     },
     changeButtonText:(triggerValue)=>{
       const mednessButton = document.getElementById('execute');
