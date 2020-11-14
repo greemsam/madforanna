@@ -98,5 +98,5 @@ function inputPictures(e){
   let createdImgTag = document.createElement('img');
   e.target.innerHTML = "";
   e.target.setAttribute('class', 'anna-picture');
-  e.target.appendChild(createdImgTag).setAttribute('src', 'img/1588547545.gif');
+  e.target.appendChild(createdImgTag).setAttribute('src', 'https://dcimg1.dcinside.com/viewimage.php?id=2cb3de27&no=24b0d769e1d32ca73fed8ffa11d028317805b44c4c832ef9bd9f21ca3c36a89f8cc31a1f7d90593f5a9313c0d8eb696980191f92d0fbbb89adf0819cda273dc177852de64c32676a520308711a53ed40eb56ea89d82f180f78f3b3');
 }
