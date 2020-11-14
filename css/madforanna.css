@@ -63,4 +63,8 @@
     line-height:40px;
     font-size:1.3rem;
   }
+  #echo span.anna-picture{
+    width:30%;
+    margin:0;
+  }
 }
