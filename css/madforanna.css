@@ -46,6 +46,13 @@
   color:#666;
   display:inline-block;
 }
+#echo span.anna-picture{
+  width:20%;
+  margin:0;
+}
+#echo span.anna-picture img{
+  width:100%;
+}
 @media screen and (max-width: 420px){
   #anna{
     width:100%;
