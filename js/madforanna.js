@@ -90,11 +90,13 @@ function inputTextClickEvent(){
   let annaTextElements = document.getElementsByClassName('anna-text');
   for(let i = 0; i<annaTextElements.length; i++){
     if(trigger === false){
-      annaTextElements[i].addEventListener('click', inputClasses);
+      annaTextElements[i].addEventListener('click', inputPictures);
     }
   }
 }
-function inputClasses(e){
+function inputPictures(e){
+  let createdImgTag = document.createElement('img');
+  e.target.innerHTML = "";
   e.target.setAttribute('class', 'anna-picture');
+  e.target.appendChild(createdImgTag).setAttribute('src', 'img/1588547545.gif');
 }
-
