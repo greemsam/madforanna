@@ -45,6 +45,7 @@
 #echo span{
   color:#666;
   display:inline-block;
+  cursor:ponter;
 }
 #echo span.anna-picture{
   width:20%;
