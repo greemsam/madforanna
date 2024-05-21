@@ -10,23 +10,19 @@ const echoLimit = 621;
 
 function active(){
   trigger = !trigger;
-  changeButtonText(trigger);
-  toggleMadnessFunctions(trigger);
+  changeButtonText();
+  toggleMadnessFunctions();
   inputTextClickEvent();
   console.log(trigger);
 }
-function toggleMadnessFunctions(triggerValue){
-  switch(triggerValue){
-    case true: madness = setInterval(madnessFunctions, speedOfEchoes);
-    break;
-    case false: clearInterval(madness);
-    break;
-  }
+function toggleMadnessFunctions(){
+  trigger ? madness = setInterval(madnessFunctions, speedOfEchoes) : clearInterval(madness)
 }
+
 function madnessFunctions(){
   numOfEchoes++;
   createEchoes();
-  changeButtonText(trigger);
+  changeButtonText();
   screenFix();
   if(numOfEchoes > echoLimit){
     removeTags();
@@ -73,14 +69,9 @@ function setTextStyle(textToAdjust){
   textToAdjust.style.fontSize = `${randomTextSize}px`;
   textToAdjust.style.marginLeft = `${randomTextMargin}px`;
 }
-function changeButtonText(triggerValue){
-  const mednessButton = document.getElementById('execute');
-  if(triggerValue === true){
-    mednessButton.innerHTML = '광기 중지하기';
-  }
-  else if(triggerValue === false){
-    mednessButton.innerHTML = '계속 찬양하기'
-  }
+function changeButtonText(){
+  const madnessButton = document.getElementById('execute');
+  trigger ? madnessButton.innerHTML = '광기 중지하기' : madnessButton.innerHTML = '계속 찬양하기'
 }
 function screenFix(){
   const contentArea = document.getElementById('content-area');
